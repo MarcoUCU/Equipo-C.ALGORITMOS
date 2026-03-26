@@ -1,5 +1,107 @@
 package ucu.edu.aed.tda;
 
-public class Biblioteca {
+public class Biblioteca extends ListaEnlazada<Libro>{
+
+    public Biblioteca(){
+    }
+
+    public boolean nuevoLibro (Libro nuevo){
+        TDANodo<Libro> unLibro = new TDANodo<>(nuevo, null);
+        if (this.esVacio()){
+            this.primero = unLibro;
+            return true;
+        }
+        
+        TDANodo<Libro> actual = this.primero;
+
+        if(primero.getDato().getNombre().compareTo(unLibro.getDato().getNombre())>0){
+            unLibro.setSiguiente(actual);
+            this.primero = unLibro;
+            return true;
+        }
+
+        while (actual.getSiguiente()!=null){
+            String nombreSiguiente = actual.getSiguiente().getDato().getNombre();        
+            String nombreAgregar = unLibro.getDato().getNombre();
+            if ((nombreAgregar.compareTo(nombreSiguiente))<0){
+                unLibro.setSiguiente(actual.getSiguiente());
+                actual.setSiguiente(unLibro);
+                return true;
+            }
+            actual = actual.getSiguiente();
+        }
+        actual.setSiguiente(unLibro);
+        return true;
+    }
     
+    public Libro retirarCatalogo(String id) {
+        if (this.esVacio()) return null;
+    
+        TDANodo<Libro> actual = this.primero;
+        int contador = 0;
+    
+        while (actual != null) {
+            if (actual.getDato().getCodigo().equals(id)) {
+                return this.eliminar(contador);
+            }
+            actual = actual.getSiguiente();
+            contador++;
+        }
+        return null;
+    }
+
+    public int existencias(String id){
+        if (this.esVacio()){return -1;}
+
+        TDANodo<Libro> actual = this.primero;
+
+        while(actual!=null){
+            if(actual.getDato().getCodigo().equals(id)){
+                return actual.getDato().getStock();
+            }
+            actual = actual.getSiguiente();
+        }
+
+        return -1;
+    }
+
+    public String listarLibros(){
+        if (this.esVacio()){return "Vacío";}
+        
+        TDANodo<Libro> actual = this.primero;
+        String resultado = "=== Catálogo ===\n";
+        int contador = 1;
+
+        while(actual!=null){
+            resultado+= contador + ") Nombre: " + actual.getDato().getNombre() + " Stock: " + actual.getDato().getStock()+ "\n";
+            actual = actual.getSiguiente();
+            contador++;
+        }
+        return resultado;
+    }
+
+    public boolean cambiarStock(String id, short variacion){
+        if (this.esVacio()){return false;}
+
+        TDANodo<Libro> actual = this.primero;
+
+        while(actual!=null){
+            if(actual.getDato().getCodigo().equals(id)){
+                actual.getDato().cambiarStock((byte) variacion);
+                return true;
+            }
+            actual = actual.getSiguiente();
+        }
+
+        return false;
+    }
+
+    public prestamo(String id){
+        this.cambiarStock(id,(short)1);
+    }
+
+    public devolucion(String id){
+        this.cambiarStock(id, (short)-1);
+    }
+
 }
