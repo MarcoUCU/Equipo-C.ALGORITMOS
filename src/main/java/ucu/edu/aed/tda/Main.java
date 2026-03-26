@@ -34,7 +34,8 @@ public class Main {
                 Libro libro = biblioteca.buscarLibro(codigo); //buscar si ya existe
 
                 if (libro == null) { //si no está en la biblioteca, lo crea
-                    biblioteca.nuevoLibro(codigo, titulo, precio, cantidad);
+                    Libro libroNuevo = new Libro(codigo, titulo, precio, cantidad);
+                    biblioteca.nuevoLibro(libroNuevo);
                     System.out.println("Nuevo libro agregado: " + titulo);
                 } else {  //si está, agrega ejemplares con el método de la biblioteca
                     biblioteca.agregarEjemplares(codigo, cantidad);
