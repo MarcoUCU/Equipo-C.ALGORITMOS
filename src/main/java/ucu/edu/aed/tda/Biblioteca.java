@@ -6,7 +6,7 @@ public class Biblioteca extends ListaEnlazada<Libro>{
     }
 
     public boolean nuevoLibro (Libro nuevo){
-        TDANodo<Libro> unLibro = new TDANodo<>(nuevo, null);
+        TDANodo<Libro> unLibro = new TDANodo<Libro>(nuevo);
         if (this.esVacio()){
             this.primero = unLibro;
             return true;
@@ -14,15 +14,15 @@ public class Biblioteca extends ListaEnlazada<Libro>{
         
         TDANodo<Libro> actual = this.primero;
 
-        if(primero.getDato().getNombre().compareTo(unLibro.getDato().getNombre())>0){
+        if(primero.getDato().getTitulo().compareTo(unLibro.getDato().getTitulo())>0){
             unLibro.setSiguiente(actual);
             this.primero = unLibro;
             return true;
         }
 
         while (actual.getSiguiente()!=null){
-            String nombreSiguiente = actual.getSiguiente().getDato().getNombre();        
-            String nombreAgregar = unLibro.getDato().getNombre();
+            String nombreSiguiente = actual.getSiguiente().getDato().getTitulo();        
+            String nombreAgregar = unLibro.getDato().getTitulo();
             if ((nombreAgregar.compareTo(nombreSiguiente))<0){
                 unLibro.setSiguiente(actual.getSiguiente());
                 actual.setSiguiente(unLibro);
@@ -57,7 +57,7 @@ public class Biblioteca extends ListaEnlazada<Libro>{
 
         while(actual!=null){
             if(actual.getDato().getCodigo().equals(id)){
-                return actual.getDato().getStock();
+                return actual.getDato().getCantidad();
             }
             actual = actual.getSiguiente();
         }
@@ -73,7 +73,7 @@ public class Biblioteca extends ListaEnlazada<Libro>{
         int contador = 1;
 
         while(actual!=null){
-            resultado+= contador + ") Nombre: " + actual.getDato().getNombre() + " Stock: " + actual.getDato().getStock()+ "\n";
+            resultado+= contador + ") Nombre: " + actual.getDato().getTitulo() + " Stock: " + actual.getDato().getCantidad()+ "\n";
             actual = actual.getSiguiente();
             contador++;
         }
@@ -96,12 +96,13 @@ public class Biblioteca extends ListaEnlazada<Libro>{
         return false;
     }
 
-    public prestamo(String id){
+    public void prestamo(String id){
         this.cambiarStock(id,(short)1);
     }
 
-    public devolucion(String id){
+    public void devolucion(String id){
         this.cambiarStock(id, (short)-1);
     }
+
 
 }
