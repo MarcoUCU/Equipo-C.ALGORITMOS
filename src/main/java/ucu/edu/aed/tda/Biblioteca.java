@@ -96,12 +96,12 @@ public class Biblioteca extends ListaEnlazada<Libro>{
         return false;
     }
 
-    public void prestamo(String id){
-        this.cambiarStock(id,(short)1);
+    public void prestamo(String id, short cantidad){
+        this.cambiarStock(id, (short)(-cantidad));
     }
 
-    public void devolucion(String id){
-        this.cambiarStock(id, (short)-1);
+    public void devolucion(String id, short cantidad){
+        this.cambiarStock(id, (short)(cantidad));
     }
 
 
