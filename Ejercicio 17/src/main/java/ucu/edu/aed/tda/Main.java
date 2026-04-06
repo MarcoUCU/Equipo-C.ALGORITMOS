@@ -1,4 +1,4 @@
-package main.java.ucu.edu.aed.tda;
+package ucu.edu.aed.tda;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -12,7 +12,7 @@ public class Main {
         procesarAdquisiciones(biblioteca); //metodos para agarrar los datos de los .txt. Se hacen en main y no en la biblioteca para no romper SRP.
         procesarPrestamos(biblioteca);
 
-        biblioteca.listarLibros(); //Se listan los libros al finalizar los metodos anteriores
+        System.out.println(biblioteca.listarLibros());; //Se listan los libros al finalizar los metodos anteriores
     }
 
     private static void procesarAdquisiciones(Biblioteca biblioteca) { //metodo para procesar adquisiciones desde el .txt. 
@@ -25,9 +25,9 @@ public class Main {
 
                 String[] partes = linea.split(","); //separa por comas 
 
-                short codigo = Short.parseShort(partes[0].trim());
+                String codigo = (partes[0].trim());
                 String titulo = partes[1].trim();
-                short precio = Short.parseShort(partes[2].trim());
+                double precio = Double.parseDouble(partes[2].trim());
                 short cantidad = Short.parseShort(partes[3].trim());
 
                 
@@ -38,7 +38,7 @@ public class Main {
                     biblioteca.nuevoLibro(libroNuevo);
                     System.out.println("Nuevo libro agregado: " + titulo);
                 } else {  //si está, agrega ejemplares con el método de la biblioteca
-                    biblioteca.agregarEjemplares(codigo, cantidad);
+                    biblioteca.cambiarStock(codigo, cantidad);
                     System.out.println("Se agregaron ejemplares a: " + titulo);
                 }
             }
@@ -60,7 +60,7 @@ public class Main {
 
                 String[] partes = linea.split(","); //separa por comas
 
-                short codigo = Short.parseShort(partes[0].trim());
+                String codigo = (partes[0].trim());
                 String tipo = partes[1].trim();
                 short cantidad = Short.parseShort(partes[2].trim());
 
