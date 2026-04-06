@@ -1,0 +1,11 @@
+Utilizando la estructura lineal de Listas junto con conjuntos logramos crear un sistema que replique la "empresa" que contendra las sucursales.
+
+1)
+Contiene un total de 107 sucursales
+2)
+La siguiente a Hong Kong es Shenzhen.
+3)
+Me da un error de ejecucion y vacia la Lista
+4)
+Imrpime la opcion B, es decir:
+Montreal;Caracas;Tulsa;Mobile;Vancouver
