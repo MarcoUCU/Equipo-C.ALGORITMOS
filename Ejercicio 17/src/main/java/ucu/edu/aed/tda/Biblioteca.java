@@ -64,6 +64,20 @@ public class Biblioteca extends ListaEnlazada<Libro>{
 
         return -1;
     }
+    public Libro buscarLibro(String id){
+        if (this.esVacio()){return null;}
+
+        TDANodo<Libro> actual = this.primero;
+
+        while(actual!=null){
+            if(actual.getDato().getCodigo().equals(id)){
+                return actual.getDato();
+            }
+            actual = actual.getSiguiente();
+        }
+
+        return null;
+    }
 
     public String listarLibros(){
         if (this.esVacio()){return "Vacío";}
