@@ -1,0 +1,12 @@
+1.	Para este caso el método se podría llamar T quitar(T dato)
+dato sería el elemento que queres sacar. Esto devolvería un elemento que se quite de la lista o un null, porque no se encontró el elemento.
+
+2.	Para este caso el método se podría llamar boolean eliminar(T dato) 
+dato sería el elemento a eliminar. Esto devolvería un true si se elimina y un false si no estaba en la lista.
+
+3.	Otros casos podrían ser boolean eliminarPos(int pos)
+pos seria la posición a eliminar en un arreglo. Esto devolvería true si se elimina y false si no puedo llegar a la posición.
+4.	Otro sería T quitarPrimero()
+No necesita recibir datos por entrada. Se quita el primer dato, útil en pilas y colas. Esto devolvería el primer elemento de la lista, que además seria removido de la misma.
+5.	Otro podría ser T eliminarÚltimo()
+No necesita recibir datos por entrada. Se elimina el último dato, útil en pilas y colas. Esto eliminaría el ultimo dato de la lista.
