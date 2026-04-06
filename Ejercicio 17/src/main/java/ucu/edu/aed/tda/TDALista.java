@@ -54,7 +54,7 @@ public interface TDALista<T> {
      * @return el elemento removido
      * @throws IndexOutOfBoundsException si el índice está fuera de rango
      */
-    T remover(int index);
+    T eliminar(int index); //cambie remover por eliminar para que coincida con el diagrama
 
     /**
      * Remueve la primera ocurrencia del elemento indicado en la lista.
@@ -66,7 +66,7 @@ public interface TDALista<T> {
      * @return {@code true} si el elemento fue encontrado y removido;
      *         {@code false} en caso contrario
      */
-    boolean remover(T elem);
+    boolean eliminar(T elem);
 
     /**
      * Determina si la lista contiene el elemento indicado.
