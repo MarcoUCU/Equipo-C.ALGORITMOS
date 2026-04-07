@@ -1,1 +1,28 @@
+1.	Boolean PoneEnCola(unElemento) {
+Si (tamaño() == N) {
+	retornar falso;
+}
+Si (esVacio()) {
+	frente = 0;
+}
+pos = (frente + tamaño()) mod N;
+vector[pos] = dato;
+aumentar el tamaño de la cola;
+retornar verdadero;
+}
+
+2.	T QuitaDeCola() {
+Si (esVacio()) {
+	retornar “No hay elementos”;
+}
+T elemento = vector[frente];
+Si (tamaño() == 1) {
+	frente = -1;
+}
+Sino {
+	frente = (frente + 1) mod N;
+}
+disminuir el tamaño de la cola;
+retornar elemento;
+}
 
