@@ -1,0 +1,35 @@
+Parte 1: especificación en lenguaje natural) Para el método de union, debo recorrer cada elemento de la lista actual y agregarlo a una nueva lista, a la cual llamaremos "resultado". Una vez que termine, tanteando si actual no es nulo, comienzo a recorrer la segunda lista, recibida a través del parámetro. Tanteo si cada elemento ya existe en resultado. Si no existe, lo agrego. Si existe, paso al siguiente, hasta completar todos los elementos de la segunda lista. 
+
+Para la intersección, la lógica será muy parecida. En este caso, compruebo si cada elemento de la primer lista está en la segunda. Si está, se añade el elemento a resultado. Si no, sigue con el proximo, hasta que se agoten todos los elementos de la lista.
+
+Pre y Post condiciones) No deben haber elementos repetidos en una misma lista. Se debe corroborar si el elemento ya se añadió a resultado antes de añadir uno nuevo. Resultado debe ser una nueva lista vacía, o debe ser limpiada antes de ser usada para prevenir errores. Deben ser conjuntos del mismo tipo para poder compararlos.
+
+Pseudocódigo) 
+lista Union(lista otra){
+resultado ← nueva lista vacía
+for elemento in this: 
+resultado.agregar(elemento)
+end for 
+for elemento in otra:
+if elemento not in resultado: 
+resultado.agregar(elemento) 
+end if
+end for 
+return resultado
+
+lista Interseccion(lista otra){
+resultado ← nueva lista vacía
+for elemento in this: 
+if elemento in otra:
+resultado.agregar(elemento)
+end if 
+end for 
+return resultado
+
+Especificación de casos de prueba) 
+Verificar con casos "normales" si queda bien (con elementos en común), si tengo un conjunto vacío y otro no, si las listas son iguales, si no hay elementos en común.
+
+Orden del tiempo de ejecución)
+El método de union recorre ambas listas una sola vez. Por lo tanto, su tiempo de ejecución es O(n+m), siendo n la cantidad de elementos en la primer lista, y m es la cantidad de elementos en la segunda lista. los if que tienen adentro del for utilizado para recorrer la lista tienen orden O(1), osea que son de tiempo constante, entonces no se cuentan. 
+El método de intersección a simple vista parece ser de orden O(N), debido al for inicial que recorre la primer lista. Pero al ver su cuerpo, descubrimos la sentencia if elemento in otra, la cual revisa la segunda lista, para ver si está el elemento. Los tiempos se multiplican, dando como resultado un tiempo de ejecución O(n.m), Siendo nuevamente n la cantidad de elementos en la primer lista, y m la cantidad de elementos en la segunda lista.
+
