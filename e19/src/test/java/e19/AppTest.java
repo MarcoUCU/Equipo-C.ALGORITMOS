@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +20,9 @@ public class AppTest {
         s = new Sintaxis();
         lineas = new ArrayList<>();
         BufferedReader lector = new BufferedReader(
-            new FileReader("C:\\Users\\joaac\\OneDrive\\Escritorio\\ucu\\algoritmos\\Equipo-C.ALGORITMOS\\e19\\corchetes.txt")
-        );
+            new InputStreamReader(getClass().getResourceAsStream("/corchetes.txt")
+        )
+    );
         String linea;
         while ((linea = lector.readLine()) != null) {
             lineas.add(linea.trim());
